@@ -1,0 +1,10 @@
+C:\Hackathon\Enmatter\Enmatter\bin\Debug\Enmatter.exe.config
+C:\Hackathon\Enmatter\Enmatter\bin\Debug\Enmatter.exe
+C:\Hackathon\Enmatter\Enmatter\bin\Debug\Enmatter.pdb
+C:\Hackathon\Enmatter\Enmatter\obj\Debug\Enmatter.csprojAssemblyReference.cache
+C:\Hackathon\Enmatter\Enmatter\obj\Debug\Enmatter.MainForm.resources
+C:\Hackathon\Enmatter\Enmatter\obj\Debug\Enmatter.Properties.Resources.resources
+C:\Hackathon\Enmatter\Enmatter\obj\Debug\Enmatter.csproj.GenerateResource.cache
+C:\Hackathon\Enmatter\Enmatter\obj\Debug\Enmatter.csproj.CoreCompileInputs.cache
+C:\Hackathon\Enmatter\Enmatter\obj\Debug\Enmatter.exe
+C:\Hackathon\Enmatter\Enmatter\obj\Debug\Enmatter.pdb
