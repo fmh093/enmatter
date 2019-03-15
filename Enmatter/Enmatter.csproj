@@ -47,6 +47,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Design\Colors.cs" />
+    <Compile Include="Encoders\Base64Encoder.cs" />
+    <Compile Include="Formatters\XmlFormatter.cs" />
     <Compile Include="Formatters\JsonFormatter.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -87,7 +89,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Encoders\" />
     <Folder Include="Tools\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

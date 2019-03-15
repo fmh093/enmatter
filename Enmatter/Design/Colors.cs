@@ -19,7 +19,9 @@ namespace Enmatter.Design
 
         public static class Label
         {
-            public static Color Black = Color.FromArgb(255, 255, 255);
+            public static Color White = Color.FromArgb(255, 255, 255);
+            public static Color Black = Color.FromArgb(0, 0, 0);
+            public static Color Header = Color.FromArgb(57, 170, 214);
         }
     }
 }

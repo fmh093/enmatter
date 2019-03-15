@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -32,31 +33,42 @@ namespace Enmatter
 
         private void InitializeOptions()
         {
-            foreach (var translatorType in Enum.GetNames(typeof(Translator.TranslatorType)))
+            var allTranslators = Assembly.GetAssembly(typeof(Translator)).GetTypes()
+                .Where(t => t.IsClass && !t.IsAbstract && t.IsSubclassOf(typeof(Translator)));
+
+            foreach (var translator in allTranslators)
             {
-                var headerLabel = BuildHeaderLabel(translatorType);
-                headerLabels.Add(headerLabel);
+                var translatorOption = Activator.CreateInstance(translator) as Translator;
+                var translatorOptionButton = BuildOptionButton(translatorOption?.Name);
+                translatorOptionButtons.Add(translatorOptionButton);
             }
         }
 
         private void DisplayOptions()
         {
-            foreach (var headerLabel in headerLabels)
+            foreach (var e in Enum.GetNames(typeof(Translator.TranslatorType)))
             {
-                panelOptions.Controls.Add(headerLabel);
                 foreach (var translatorOptionButton in translatorOptionButtons)
                     panelOptions.Controls.Add(translatorOptionButton);
             }
+
+
         }
 
         private Label BuildHeaderLabel(string text)
         {
-            var label = new Label { Font = new Font("Arial", 16), Text = text, Dock = DockStyle.Top };
+            var label = new Label { Font = new Font("Tahoma", 16), Text = text, Dock = DockStyle.Top, ForeColor = Colors.Label.Header};
+            label.Height = 30;
             return label;
         }
         private Button BuildOptionButton(string text)
         {
-
+            var button = new Button();
+            button.Font = new Font("Tahoma", 10);
+            button.Text = text;
+            button.Dock = DockStyle.Top;
+            button.Height = 30;
+            return button;
         }
 
         private void InitializeTextboxes()
