@@ -8,10 +8,5 @@ namespace Enmatter.Models
 {
     abstract class Parser : Translator
     {
-        protected Parser()
-        {
-            Type = TranslatorType.Parser;
-        }
-        public abstract string Parse();
     }
 }

@@ -13,7 +13,11 @@ namespace Enmatter.Encoders
         public Base64Encoder()
         {
             Name = "Base64 Encoder";
-            OptionName = "Base64";
+        }
+
+        public override string Translate(string input)
+        {
+            throw new NotImplementedException();
         }
     }
 }

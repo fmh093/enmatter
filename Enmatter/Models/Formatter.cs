@@ -8,11 +8,5 @@ namespace Enmatter.Models
 {
     abstract class Formatter : Translator
     {
-        protected Formatter()
-        {
-            Type = TranslatorType.Formatter;
-        }
-
-        public abstract string Format();
     }
 }

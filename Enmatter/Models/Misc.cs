@@ -8,10 +8,5 @@ namespace Enmatter.Models
 {
     abstract class Misc : Translator
     {
-        protected Misc()
-        {
-            Type = TranslatorType.Misc;
-        }
-        public abstract string Translate();
     }
 }

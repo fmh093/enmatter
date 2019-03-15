@@ -20,76 +20,38 @@ namespace Enmatter
         private readonly List<Translator> _allTranslators = new List<Translator>();
         private TranslatorController _translatorController = new TranslatorController();
 
+        private string _currentOption = null;
+
 
         public MainForm()
         {
             InitializeComponent();
+            _currentOption = "Json";
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            InitializeTextboxes();
-            //InitializeOptions();
+            tboxInput.Text = Clipboard.GetText();
+
+            foreach (var button in panelOptions.Controls.OfType<Button>())
+                button.Click += OptionClicked;
         }
 
-        //private void InitializeOptions()
-        //{
-        //    var _allTranslators = Assembly.GetAssembly(typeof(Translator)).GetTypes()
-        //        .Where(t => t.IsClass && !t.IsAbstract && t.IsSubclassOf(typeof(Translator)));
-
-        //    foreach (var translator in _allTranslators)
-        //    {
-        //        var translatorOption = Activator.CreateInstance(translator) as Translator;
-        //        var translatorOptionButton = BuildOptionButton(translatorOption?.Name);
-        //        _translatorOptionButtons.Add(translatorOptionButton);
-        //    }
-
-        //    foreach (var e in Enum.GetNames(typeof(Translator.TranslatorType)))
-        //    {
-        //        foreach (var translatorOptionButton in _translatorOptionButtons)
-        //        {
-        //            translatorOptionButton.Click += OptionClicked;
-        //            panelOptions.Controls.Add(translatorOptionButton);
-        //        }
-        //    }
-
-        //    foreach (var button in _translatorOptionButtons)
-        //        button.Click += OptionClicked;
-        //}
-
-        //private void OptionClicked(object sender, EventArgs e)
-        //{
-        //    var buttonInfo = (Button) sender;
-
-        //}
-
-        private void InitializeTextboxes()
+        private void OptionClicked(object sender, EventArgs e)
         {
-            tboxInput_TextChanged(null, null);
+            var button = (Button) sender;
+            _currentOption = button.Text;
 
-            foreach (var richTextBox in Controls.OfType<RichTextBox>())
-            {
-                richTextBox.BorderStyle = BorderStyle.FixedSingle;
-                richTextBox.BackColor = Colors.Background.Grey;
-                richTextBox.ForeColor = Colors.Label.White;
-                richTextBox.Font = new Font("Lucida Console", 10);
-            }
+            _translatorController.Translate(button.Text);
+            UpdateHeader(sender, e);
         }
 
-        private Button BuildOptionButton(string text = "Undefined")
+        private void UpdateHeader(object sender, EventArgs e)
         {
-            var button = new Button
-            {
-                Font = new Font("Tahoma", 10),
-                Text = text,
-                FlatStyle = FlatStyle.Popup,
-                Dock = DockStyle.Top,
-                Height = 30,
-                FlatAppearance = { BorderColor = Color.White }
-            };
-            return button;
+            var button = (Button)sender;
+            lbHeaderCurrentTranslator.Text = button.Text;
+            _translatorController.UpdateCurrentTranslator(button.Text);
         }
-
 
         private void tboxInput_TextChanged(object sender, EventArgs e)
         {

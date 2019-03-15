@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Enmatter.Models;
+using Newtonsoft.Json;
 
 namespace Enmatter.Formatters
 {
@@ -12,7 +13,12 @@ namespace Enmatter.Formatters
         public JsonFormatter()
         {
             Name = "Json Formatter";
-            OptionName = "Json";
+        }
+
+        public override string Translate(string input)
+        {
+            var json = JsonConvert.SerializeObject(input, Formatting.Indented);
+            return json;
         }
     }
 }

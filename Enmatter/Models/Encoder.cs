@@ -9,11 +9,5 @@ namespace Enmatter.Models
     abstract class Encoder : Translator
     {
         public bool Decode;
-
-        protected Encoder()
-        {
-            Type = TranslatorType.Encoder;
-        }
-        public abstract string Encode();
     }
 }
