@@ -11,5 +11,14 @@ namespace Enmatter.Models
         public string Id { get; set; }
         public string Name { get; set; }
         public string OptionName { get; set; }
+        public TranslatorType Type { get; set; }
+
+        internal enum TranslatorType
+        {
+            Formatter = 0,
+            Encoder = 10,
+            Parser = 20,
+            Misc = 30
+        }
     }
 }

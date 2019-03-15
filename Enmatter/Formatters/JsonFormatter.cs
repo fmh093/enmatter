@@ -7,13 +7,12 @@ using Enmatter.Models;
 
 namespace Enmatter.Formatters
 {
-    class JsonFormatter : Translator
+    class JsonFormatter : Formatter
     {
         public JsonFormatter()
         {
             Name = "Json Formatter";
             OptionName = "Json";
-
         }
     }
 }

@@ -8,12 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Enmatter.Design;
+using Enmatter.Models;
 
 namespace Enmatter
 {
     public partial class MainForm : Form
     {
-        private List<Label> headerLabels;
+        private List<Label> headerLabels = new List<Label>();
+        private List<Button> translatorOptionButtons = new List<Button>();
 
         public MainForm()
         {
@@ -23,17 +25,38 @@ namespace Enmatter
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            InitializeLabels();
-            InitializeTextboxes();
+            tboxInput_TextChanged(null, null);
+            InitializeOptions();
+            DisplayOptions();
         }
 
-        private void InitializeLabels()
+        private void InitializeOptions()
         {
-            headerLabels = new List<Label> { lbHeaderFormatters, lbHeaderEncoders, lbHeaderTools };
-            foreach (var header in headerLabels)
+            foreach (var translatorType in Enum.GetNames(typeof(Translator.TranslatorType)))
             {
-                header.BorderStyle = BorderStyle.FixedSingle;
+                var headerLabel = BuildHeaderLabel(translatorType);
+                headerLabels.Add(headerLabel);
             }
+        }
+
+        private void DisplayOptions()
+        {
+            foreach (var headerLabel in headerLabels)
+            {
+                panelOptions.Controls.Add(headerLabel);
+                foreach (var translatorOptionButton in translatorOptionButtons)
+                    panelOptions.Controls.Add(translatorOptionButton);
+            }
+        }
+
+        private Label BuildHeaderLabel(string text)
+        {
+            var label = new Label { Font = new Font("Arial", 16), Text = text, Dock = DockStyle.Top };
+            return label;
+        }
+        private Button BuildOptionButton(string text)
+        {
+
         }
 
         private void InitializeTextboxes()
