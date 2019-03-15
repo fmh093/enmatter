@@ -29,39 +29,39 @@ namespace Enmatter
         private void MainForm_Load(object sender, EventArgs e)
         {
             InitializeTextboxes();
-            InitializeOptions();
+            //InitializeOptions();
         }
 
-        private void InitializeOptions()
-        {
-            var _allTranslators = Assembly.GetAssembly(typeof(Translator)).GetTypes()
-                .Where(t => t.IsClass && !t.IsAbstract && t.IsSubclassOf(typeof(Translator)));
+        //private void InitializeOptions()
+        //{
+        //    var _allTranslators = Assembly.GetAssembly(typeof(Translator)).GetTypes()
+        //        .Where(t => t.IsClass && !t.IsAbstract && t.IsSubclassOf(typeof(Translator)));
 
-            foreach (var translator in _allTranslators)
-            {
-                var translatorOption = Activator.CreateInstance(translator) as Translator;
-                var translatorOptionButton = BuildOptionButton(translatorOption?.Name);
-                _translatorOptionButtons.Add(translatorOptionButton);
-            }
+        //    foreach (var translator in _allTranslators)
+        //    {
+        //        var translatorOption = Activator.CreateInstance(translator) as Translator;
+        //        var translatorOptionButton = BuildOptionButton(translatorOption?.Name);
+        //        _translatorOptionButtons.Add(translatorOptionButton);
+        //    }
 
-            foreach (var e in Enum.GetNames(typeof(Translator.TranslatorType)))
-            {
-                foreach (var translatorOptionButton in _translatorOptionButtons)
-                {
-                    translatorOptionButton.Click += OptionClicked;
-                    panelOptions.Controls.Add(translatorOptionButton);
-                }
-            }
+        //    foreach (var e in Enum.GetNames(typeof(Translator.TranslatorType)))
+        //    {
+        //        foreach (var translatorOptionButton in _translatorOptionButtons)
+        //        {
+        //            translatorOptionButton.Click += OptionClicked;
+        //            panelOptions.Controls.Add(translatorOptionButton);
+        //        }
+        //    }
 
-            foreach (var button in _translatorOptionButtons)
-                button.Click += OptionClicked;
-        }
+        //    foreach (var button in _translatorOptionButtons)
+        //        button.Click += OptionClicked;
+        //}
 
-        private void OptionClicked(object sender, EventArgs e)
-        {
-            var buttonInfo = (Button) sender;
-            _translatorController
-        }
+        //private void OptionClicked(object sender, EventArgs e)
+        //{
+        //    var buttonInfo = (Button) sender;
+
+        //}
 
         private void InitializeTextboxes()
         {
