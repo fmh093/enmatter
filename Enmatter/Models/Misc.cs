@@ -12,5 +12,6 @@ namespace Enmatter.Models
         {
             Type = TranslatorType.Misc;
         }
+        public abstract string Translate();
     }
 }

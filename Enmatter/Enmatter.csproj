@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\TranslatorController.cs" />
     <Compile Include="Design\Colors.cs" />
     <Compile Include="Encoders\Base64Encoder.cs" />
     <Compile Include="Formatters\XmlFormatter.cs" />

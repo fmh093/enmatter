@@ -14,5 +14,6 @@ namespace Enmatter.Models
         {
             Type = TranslatorType.Encoder;
         }
+        public abstract string Encode();
     }
 }

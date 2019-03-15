@@ -12,5 +12,6 @@ namespace Enmatter.Models
         {
             Type = TranslatorType.Parser;
         }
+        public abstract string Parse();
     }
 }

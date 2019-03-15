@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Enmatter.Controllers;
 using Enmatter.Design;
 using Enmatter.Models;
 
@@ -15,68 +16,80 @@ namespace Enmatter
 {
     public partial class MainForm : Form
     {
-        private List<Label> headerLabels = new List<Label>();
-        private List<Button> translatorOptionButtons = new List<Button>();
+        private readonly List<Button> _translatorOptionButtons = new List<Button>();
+        private readonly List<Translator> _allTranslators = new List<Translator>();
+        private TranslatorController _translatorController = new TranslatorController();
+
 
         public MainForm()
         {
             InitializeComponent();
-            tboxOutput.BackColor = Colors.Background.Grey;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            tboxInput_TextChanged(null, null);
+            InitializeTextboxes();
             InitializeOptions();
-            DisplayOptions();
         }
 
         private void InitializeOptions()
         {
-            var allTranslators = Assembly.GetAssembly(typeof(Translator)).GetTypes()
+            var _allTranslators = Assembly.GetAssembly(typeof(Translator)).GetTypes()
                 .Where(t => t.IsClass && !t.IsAbstract && t.IsSubclassOf(typeof(Translator)));
 
-            foreach (var translator in allTranslators)
+            foreach (var translator in _allTranslators)
             {
                 var translatorOption = Activator.CreateInstance(translator) as Translator;
                 var translatorOptionButton = BuildOptionButton(translatorOption?.Name);
-                translatorOptionButtons.Add(translatorOptionButton);
+                _translatorOptionButtons.Add(translatorOptionButton);
             }
-        }
 
-        private void DisplayOptions()
-        {
             foreach (var e in Enum.GetNames(typeof(Translator.TranslatorType)))
             {
-                foreach (var translatorOptionButton in translatorOptionButtons)
+                foreach (var translatorOptionButton in _translatorOptionButtons)
+                {
+                    translatorOptionButton.Click += OptionClicked;
                     panelOptions.Controls.Add(translatorOptionButton);
+                }
             }
 
-
+            foreach (var button in _translatorOptionButtons)
+                button.Click += OptionClicked;
         }
 
-        private Label BuildHeaderLabel(string text)
+        private void OptionClicked(object sender, EventArgs e)
         {
-            var label = new Label { Font = new Font("Tahoma", 16), Text = text, Dock = DockStyle.Top, ForeColor = Colors.Label.Header};
-            label.Height = 30;
-            return label;
-        }
-        private Button BuildOptionButton(string text)
-        {
-            var button = new Button();
-            button.Font = new Font("Tahoma", 10);
-            button.Text = text;
-            button.Dock = DockStyle.Top;
-            button.Height = 30;
-            return button;
+            var buttonInfo = (Button) sender;
+            _translatorController
         }
 
         private void InitializeTextboxes()
         {
             tboxInput_TextChanged(null, null);
-            tboxOutput.BorderStyle = BorderStyle.FixedSingle;
-            tboxOutput.BackColor = Colors.Background.Grey;
+
+            foreach (var richTextBox in Controls.OfType<RichTextBox>())
+            {
+                richTextBox.BorderStyle = BorderStyle.FixedSingle;
+                richTextBox.BackColor = Colors.Background.Grey;
+                richTextBox.ForeColor = Colors.Label.White;
+                richTextBox.Font = new Font("Lucida Console", 10);
+            }
         }
+
+        private Button BuildOptionButton(string text = "Undefined")
+        {
+            var button = new Button
+            {
+                Font = new Font("Tahoma", 10),
+                Text = text,
+                FlatStyle = FlatStyle.Popup,
+                Dock = DockStyle.Top,
+                Height = 30,
+                FlatAppearance = { BorderColor = Color.White }
+            };
+            return button;
+        }
+
 
         private void tboxInput_TextChanged(object sender, EventArgs e)
         {

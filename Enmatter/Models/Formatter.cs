@@ -12,5 +12,7 @@ namespace Enmatter.Models
         {
             Type = TranslatorType.Formatter;
         }
+
+        public abstract string Format();
     }
 }
