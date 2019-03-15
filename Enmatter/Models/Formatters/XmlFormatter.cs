@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using Enmatter.Models;
 
 namespace Enmatter.Formatters
@@ -16,7 +17,8 @@ namespace Enmatter.Formatters
 
         public override string Translate(string input)
         {
-            throw new NotImplementedException();
+            var doc = XDocument.Parse(input);
+            return doc.ToString();
         }
     }
 }

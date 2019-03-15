@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Enmatter.Models;
 using Enmatter.Services;
 
 namespace Enmatter.Controllers
@@ -16,10 +17,9 @@ namespace Enmatter.Controllers
             _translatorService = new TranslatorService();
         }
 
-        public string Translate(string input)
+        public TranslationResponseObject Translate(string input)
         {
-            _translatorService.Translate(input);
-            return null;
+            return _translatorService.Translate(input);
         }
 
         public void UpdateCurrentTranslator(string translatorName)

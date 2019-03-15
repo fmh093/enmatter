@@ -8,3 +8,7 @@ C:\Hackathon\Enmatter\Enmatter\obj\Debug\Enmatter.csproj.GenerateResource.cache
 C:\Hackathon\Enmatter\Enmatter\obj\Debug\Enmatter.csproj.CoreCompileInputs.cache
 C:\Hackathon\Enmatter\Enmatter\obj\Debug\Enmatter.exe
 C:\Hackathon\Enmatter\Enmatter\obj\Debug\Enmatter.pdb
+C:\Hackathon\Enmatter\Enmatter\bin\Debug\Newtonsoft.Json.dll
+C:\Hackathon\Enmatter\Enmatter\bin\Debug\Newtonsoft.Json.pdb
+C:\Hackathon\Enmatter\Enmatter\bin\Debug\Newtonsoft.Json.xml
+C:\Hackathon\Enmatter\Enmatter\obj\Debug\Enmatter.csproj.CopyComplete

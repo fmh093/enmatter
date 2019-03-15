@@ -8,15 +8,15 @@ namespace Enmatter.Models
 {
     class TranslationResponseObject
     {
-        public Type MessageType { get; set; }
+        public Severity MessageType { get; set; }
         public string Output { get; set; }
 
         public TranslationResponseObject()
         {
-            MessageType = Type.Formatted;
+            MessageType = Severity.Formatted;
         }
 
-        public enum Type
+        public enum Severity
         {
             Formatted = 0,
             Error = 10

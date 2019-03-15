@@ -16,7 +16,7 @@ namespace Enmatter.Formatters
 
         public override string Translate(string input)
         {
-            throw new NotImplementedException();
+            return new System.Diagnostics.StackTrace(input);
         }
     }
 }

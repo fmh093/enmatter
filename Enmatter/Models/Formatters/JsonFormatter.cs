@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Enmatter.Models;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
+//using Newtonsoft.Json;
 
 namespace Enmatter.Formatters
 {
@@ -17,7 +20,7 @@ namespace Enmatter.Formatters
 
         public override string Translate(string input)
         {
-            var json = JsonConvert.SerializeObject(input, Formatting.Indented);
+            var json = JToken.Parse(input).ToString(Formatting.Indented);
             return json;
         }
     }

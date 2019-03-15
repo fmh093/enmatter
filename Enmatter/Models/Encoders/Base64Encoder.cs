@@ -10,14 +10,22 @@ namespace Enmatter.Encoders
 {
     class Base64Encoder : Encoder
     {
-        public Base64Encoder()
+        public Base64Encoder(bool decode = false)
         {
             Name = "Base64 Encoder";
+            Decode = decode;
         }
 
         public override string Translate(string input)
         {
-            throw new NotImplementedException();
+            if (Decode)
+            {
+                var data = Convert.FromBase64String(input);
+                return Encoding.ASCII.GetString(data);
+            }
+
+            var inputAsBytes = Encoding.ASCII.GetBytes(input);
+            return Convert.ToBase64String(inputAsBytes);
         }
     }
 }

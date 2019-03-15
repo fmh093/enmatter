@@ -30,22 +30,30 @@ namespace Enmatter.Services
                 case "Base64 Encoder":
                     _currentTranslator = new Base64Encoder();
                     break;
+                case "Base64 Decoder":
+                    _currentTranslator = new Base64Encoder(true);
+                    break;
                 default:
                     _currentTranslator = new JsonFormatter();
                     break;
             }
         }
 
-        public string Translate(string input)
+        public TranslationResponseObject Translate(string input)
         {
+            var response = new TranslationResponseObject();
             try
             {
-                return _currentTranslator.Translate(input);
+                response.Output = _currentTranslator.Translate(input);
+                response.MessageType = TranslationResponseObject.Severity.Formatted;
             }
             catch (Exception e)
             {
-                return (e.Message);
+                response.Output = e.Message;
+                response.MessageType = TranslationResponseObject.Severity.Error;
             }
+
+            return response;
         }
     }
 }
