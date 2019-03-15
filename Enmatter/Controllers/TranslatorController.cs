@@ -27,5 +27,10 @@ namespace Enmatter.Controllers
             _translatorService.UpdateCurrentTranslator(translatorName);
         }
 
+        public string SuggestTranslator(string inputText)
+        {
+            return _translatorService.SuggestTranslator(inputText);
+        }
+
     }
 }

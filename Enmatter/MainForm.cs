@@ -24,13 +24,14 @@ namespace Enmatter
         public MainForm()
         {
             InitializeComponent();
-            _currentOption = "Json Formatter";
             KeyPreview = true;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
             tboxInput.Text = Clipboard.GetText();
+
+            _currentOption = _translatorController.SuggestTranslator(tboxInput.Text);
 
             foreach (var button in panelOptions.Controls.OfType<Button>())
             {
@@ -42,7 +43,8 @@ namespace Enmatter
                     : Colors.Background.LightGrey;
             }
 
-            UpdateHeader(btnOptionJsonFormatter, e);
+            UpdateButtonNames();
+            UpdateHeader(btnOption01, e);
             Translate();
 
             foreach (var richTextBox in Controls.OfType<RichTextBox>())
@@ -58,20 +60,34 @@ namespace Enmatter
             tboxOutput.Text = response.Output;
         }
 
+        private void UpdateButtonNames()
+        {
+            btnOption01.Text = TranslatorStaticNames.JsonFormatter;
+            btnOption02.Text = TranslatorStaticNames.XmlFormatter;
+            btnOption03.Text = TranslatorStaticNames.StacktraceFormatter;
+            btnOption04.Text = TranslatorStaticNames.Base64Encoder;
+            btnOption05.Text = TranslatorStaticNames.Base64Decoder;
+            btnOption06.Text = TranslatorStaticNames.UrlEncoder;
+            btnOption07.Text = TranslatorStaticNames.UrlDecoder;
+            btnOption08.Text = TranslatorStaticNames.MD5HashGenerator;
+            btnOption09.Text = TranslatorStaticNames.SHA256HashGenerator;
+            btnOption10.Text = TranslatorStaticNames.GuidParser;
+            btnOption11.Text = TranslatorStaticNames.StatusCodeLookup;
+        }
+
         private void OptionClicked(object sender, EventArgs e)
         {
             var buttonInfo = (Button)sender;
             _currentOption = buttonInfo.Text;
 
+            UpdateHeader(sender, e);
             Translate();
-
-
-                UpdateHeader(sender, e);
+            
 
             foreach (var button in panelOptions.Controls.OfType<Button>())
             {
-                button.BackColor = button.Text == _currentOption 
-                    ? Colors.Background.Grey 
+                button.BackColor = button.Text == _currentOption
+                    ? Colors.Background.Grey
                     : Colors.Background.LightGrey;
             }
         }

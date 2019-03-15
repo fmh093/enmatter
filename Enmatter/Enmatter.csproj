@@ -32,12 +32,16 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>mainIcon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,10 +55,14 @@
   <ItemGroup>
     <Compile Include="Controllers\TranslatorController.cs" />
     <Compile Include="Design\Colors.cs" />
-    <Compile Include="Models\Encoders\Base64Encoder.cs" />
-    <Compile Include="Models\Formatters\StacktraceFormatter.cs" />
-    <Compile Include="Models\Formatters\XmlFormatter.cs" />
-    <Compile Include="Models\Formatters\JsonFormatter.cs" />
+    <Compile Include="Services\HashGenerators\SHA256HashGenerator.cs" />
+    <Compile Include="Services\HashGenerators\MD5HashGenerator.cs" />
+    <Compile Include="Services\Encoders\UrlEncoder.cs" />
+    <Compile Include="Services\Encoders\Base64Encoder.cs" />
+    <Compile Include="Models\HashGenerator.cs" />
+    <Compile Include="Services\Formatters\StacktraceFormatter.cs" />
+    <Compile Include="Services\Formatters\XmlFormatter.cs" />
+    <Compile Include="Services\Formatters\JsonFormatter.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,8 +73,11 @@
     <Compile Include="Models\Misc.cs" />
     <Compile Include="Models\Parser.cs" />
     <Compile Include="Models\Formatter.cs" />
+    <Compile Include="Services\Misc\JsonFormatter.cs" />
+    <Compile Include="Services\Parsers\GuidParser.cs" />
     <Compile Include="Models\TranslationInformation.cs" />
     <Compile Include="Models\Translator.cs" />
+    <Compile Include="Models\TranslatorStaticNames.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\TranslatorService.cs" />
@@ -96,9 +107,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Models\Misc\" />
-    <Folder Include="Models\Parsers\" />
+    <Content Include="mainIcon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
