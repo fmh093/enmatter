@@ -12,7 +12,7 @@ namespace Enmatter.Formatters
     {
         public StacktraceFormatter()
         {
-            Name = "Stacktrace Formatter";
+            Name = TranslatorStaticNames.StacktraceFormatter;
         }
 
         public override string Translate(string input)

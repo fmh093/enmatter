@@ -53,7 +53,7 @@ namespace Enmatter.Services
                     _currentTranslator = new StatusCodeLookup();
                     break;
                 default:
-                    _currentTranslator = new JsonFormatter();
+                    _currentTranslator = new StringTool();
                     break;
             }
         }
@@ -90,7 +90,7 @@ namespace Enmatter.Services
             if (inputText.Length == 3 && int.TryParse(inputText, out _))
                 return TranslatorStaticNames.StatusCodeLookup;
 
-            return TranslatorStaticNames.JsonFormatter;
+            return TranslatorStaticNames.StringTool;
 
         }
     }

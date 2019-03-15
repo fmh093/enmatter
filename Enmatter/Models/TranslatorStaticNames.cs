@@ -19,5 +19,6 @@ namespace Enmatter.Models
         public const string SHA256HashGenerator = "SHA-256 Hash Generator";
         public const string GuidParser = "Guid Parser";
         public const string StatusCodeLookup = "Status Code Lookup";
+        public const string StringTool = "String Tool";
     }
 }

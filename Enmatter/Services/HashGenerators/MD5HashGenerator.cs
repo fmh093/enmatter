@@ -14,7 +14,7 @@ namespace Enmatter.Encoders
     {
         public MD5HashGenerator()
         {
-            Name = "MD5 Hash Generator";
+            Name = TranslatorStaticNames.MD5HashGenerator;
         }
 
         public override string Translate(string input)

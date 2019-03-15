@@ -73,9 +73,10 @@
     <Compile Include="Models\Misc.cs" />
     <Compile Include="Models\Parser.cs" />
     <Compile Include="Models\Formatter.cs" />
-    <Compile Include="Services\Misc\JsonFormatter.cs" />
+    <Compile Include="Services\Misc\StringTool.cs" />
+    <Compile Include="Services\Misc\StatusCodeLookup.cs" />
     <Compile Include="Services\Parsers\GuidParser.cs" />
-    <Compile Include="Models\TranslationInformation.cs" />
+    <Compile Include="Models\TranslationResponseObject.cs" />
     <Compile Include="Models\Translator.cs" />
     <Compile Include="Models\TranslatorStaticNames.cs" />
     <Compile Include="Program.cs" />
@@ -109,6 +110,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Images\invalid.png" />
+    <Content Include="Images\valid.png" />
+    <Content Include="Images\warning.png" />
     <Content Include="mainIcon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

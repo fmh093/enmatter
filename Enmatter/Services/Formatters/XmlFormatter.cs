@@ -12,7 +12,7 @@ namespace Enmatter.Formatters
     {
         public XmlFormatter()
         {
-            Name = "Xml Formatter";
+            Name = TranslatorStaticNames.XmlFormatter;
         }
 
         public override string Translate(string input)

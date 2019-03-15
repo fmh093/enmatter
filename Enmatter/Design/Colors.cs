@@ -11,6 +11,8 @@ namespace Enmatter.Design
             public static Color DarkGrey = Color.FromArgb(18, 18, 18);
             public static Color Grey  = Color.FromArgb(24, 24, 24);
             public static Color LightGrey = Color.FromArgb(48, 48, 48);
+            public static Color Red = Color.FromArgb(20, 0, 0);
+            public static Color RichTextBoxDefault = Grey;
         }
 
         public static class Foreground
@@ -19,6 +21,7 @@ namespace Enmatter.Design
             public static Color WhiteGrey = Color.FromArgb(220, 220, 220);
             public static Color Black = Color.FromArgb(0, 0, 0);
             public static Color Header = Color.FromArgb(57, 170, 214);
+            public static Color RichTextBoxDefault = WhiteGrey;
         }
     }
 }

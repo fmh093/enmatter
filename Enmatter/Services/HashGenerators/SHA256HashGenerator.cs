@@ -14,7 +14,7 @@ namespace Enmatter.Encoders
     {
         public SHA256HashGenerator()
         {
-            Name = "SHA-256 Hash Generator";
+            Name = TranslatorStaticNames.SHA256HashGenerator;
         }
 
         public override string Translate(string input)

@@ -15,7 +15,7 @@ namespace Enmatter.Formatters
     {
         public JsonFormatter()
         {
-            Name = "Json Formatter";
+            Name = TranslatorStaticNames.JsonFormatter;
         }
 
         public override string Translate(string input)

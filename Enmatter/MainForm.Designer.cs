@@ -47,7 +47,10 @@
             this.btnOption09 = new System.Windows.Forms.Button();
             this.btnOption10 = new System.Windows.Forms.Button();
             this.btnOption11 = new System.Windows.Forms.Button();
+            this.pboxValidationIcon = new System.Windows.Forms.PictureBox();
+            this.btnOption12 = new System.Windows.Forms.Button();
             this.panelOptions.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pboxValidationIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // panelOptions
@@ -57,6 +60,7 @@
             this.panelOptions.AutoScroll = true;
             this.panelOptions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
             this.panelOptions.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelOptions.Controls.Add(this.btnOption12);
             this.panelOptions.Controls.Add(this.btnOption11);
             this.panelOptions.Controls.Add(this.btnOption10);
             this.panelOptions.Controls.Add(this.btnOption09);
@@ -195,6 +199,8 @@
             // 
             // lbHeaderCurrentTranslator
             // 
+            this.lbHeaderCurrentTranslator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lbHeaderCurrentTranslator.AutoSize = true;
             this.lbHeaderCurrentTranslator.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbHeaderCurrentTranslator.Location = new System.Drawing.Point(240, 11);
@@ -297,12 +303,33 @@
             this.btnOption11.Text = "Status Code Lookup";
             this.btnOption11.UseVisualStyleBackColor = true;
             // 
+            // pboxValidationIcon
+            // 
+            this.pboxValidationIcon.Location = new System.Drawing.Point(201, 11);
+            this.pboxValidationIcon.Name = "pboxValidationIcon";
+            this.pboxValidationIcon.Size = new System.Drawing.Size(40, 36);
+            this.pboxValidationIcon.TabIndex = 7;
+            this.pboxValidationIcon.TabStop = false;
+            // 
+            // btnOption12
+            // 
+            this.btnOption12.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnOption12.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnOption12.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOption12.Location = new System.Drawing.Point(0, 440);
+            this.btnOption12.Name = "btnOption12";
+            this.btnOption12.Size = new System.Drawing.Size(227, 40);
+            this.btnOption12.TabIndex = 11;
+            this.btnOption12.Text = "String Tool";
+            this.btnOption12.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(36)))), ((int)(((byte)(36)))));
             this.ClientSize = new System.Drawing.Size(1440, 1080);
+            this.Controls.Add(this.pboxValidationIcon);
             this.Controls.Add(this.bnProgramMaximize);
             this.Controls.Add(this.bnProgramExit);
             this.Controls.Add(this.bnProgramMinimize);
@@ -322,6 +349,7 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseDown);
             this.panelOptions.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pboxValidationIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -347,6 +375,8 @@
         private System.Windows.Forms.Button btnOption09;
         private System.Windows.Forms.Button btnOption10;
         private System.Windows.Forms.Button btnOption11;
+        private System.Windows.Forms.PictureBox pboxValidationIcon;
+        private System.Windows.Forms.Button btnOption12;
     }
 }
 

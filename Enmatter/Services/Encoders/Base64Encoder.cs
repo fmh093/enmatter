@@ -12,7 +12,7 @@ namespace Enmatter.Encoders
     {
         public Base64Encoder(bool decode = false)
         {
-            Name = "Base64 Encoder";
+            Name = TranslatorStaticNames.Base64Encoder;
             Decode = decode;
         }
 

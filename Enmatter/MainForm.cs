@@ -30,6 +30,7 @@ namespace Enmatter
         private void MainForm_Load(object sender, EventArgs e)
         {
             tboxInput.Text = Clipboard.GetText();
+            pboxValidationIcon.SizeMode = PictureBoxSizeMode.Zoom;
 
             _currentOption = _translatorController.SuggestTranslator(tboxInput.Text);
 
@@ -49,14 +50,18 @@ namespace Enmatter
 
             foreach (var richTextBox in Controls.OfType<RichTextBox>())
             {
-                richTextBox.BackColor = Colors.Background.Grey;
-                richTextBox.ForeColor = Colors.Foreground.WhiteGrey;
+                richTextBox.BackColor = Colors.Background.RichTextBoxDefault;
+                richTextBox.ForeColor = Colors.Foreground.RichTextBoxDefault;
             }
         }
         private void Translate()
         {
             _translatorController.UpdateCurrentTranslator(_currentOption);
             var response = _translatorController.Translate(tboxInput.Text);
+            pboxValidationIcon.Visible = response.MessageType != TranslationResponseObject.Severity.Formatted;
+            if (response.MessageType == TranslationResponseObject.Severity.Error)
+                pboxValidationIcon.Image = new Bitmap(@"C:\Hackathon\Enmatter\Enmatter\Images\invalid.png");
+
             tboxOutput.Text = response.Output;
         }
 
@@ -73,6 +78,7 @@ namespace Enmatter
             btnOption09.Text = TranslatorStaticNames.SHA256HashGenerator;
             btnOption10.Text = TranslatorStaticNames.GuidParser;
             btnOption11.Text = TranslatorStaticNames.StatusCodeLookup;
+            btnOption12.Text = TranslatorStaticNames.StringTool;
         }
 
         private void OptionClicked(object sender, EventArgs e)
@@ -82,7 +88,7 @@ namespace Enmatter
 
             UpdateHeader(sender, e);
             Translate();
-            
+
 
             foreach (var button in panelOptions.Controls.OfType<Button>())
             {

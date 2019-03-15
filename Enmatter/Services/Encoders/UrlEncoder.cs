@@ -13,7 +13,7 @@ namespace Enmatter.Encoders
     {
         public UrlEncoder(bool decode = false)
         {
-            Name = "Url Encoder";
+            Name = TranslatorStaticNames.UrlEncoder;
             Decode = decode;
         }
 
