@@ -76,13 +76,15 @@ namespace Enmatter.Services
 
         public string SuggestTranslator(string inputText)
         {
-            if (inputText.Length > 0 && inputText[0] == '{' || inputText[0] == '[')
+            if (inputText.Length > 0 && (inputText[0] == '{' || inputText[0] == '['))
                 return TranslatorStaticNames.JsonFormatter;
             if(inputText.Length > 0 && inputText[0] == '<')
                 return TranslatorStaticNames.XmlFormatter;
 
             if (inputText.Length > 3 && inputText.Substring(0, 4) == "http")
-                return TranslatorStaticNames.UrlEncoder;
+                return inputText.Contains('%') 
+                    ? TranslatorStaticNames.UrlDecoder 
+                    : TranslatorStaticNames.UrlEncoder;
 
             if (inputText.Length > 13 && inputText[8] == '-' && inputText[13] == '-')
                 return TranslatorStaticNames.GuidParser; 

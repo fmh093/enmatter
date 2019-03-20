@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -60,7 +61,7 @@ namespace Enmatter
             var response = _translatorController.Translate(tboxInput.Text);
             pboxValidationIcon.Visible = response.MessageType != TranslationResponseObject.Severity.Formatted;
             if (response.MessageType == TranslationResponseObject.Severity.Error)
-                pboxValidationIcon.Image = new Bitmap(@"C:\Hackathon\Enmatter\Enmatter\Images\invalid.png");
+                pboxValidationIcon.Image = new Bitmap(Path.GetFullPath(Path.Combine(Application.StartupPath, @"..\..\Images\invalid.png")));
 
             tboxOutput.Text = response.Output;
         }
