@@ -31,6 +31,7 @@ namespace Enmatter
         private void MainForm_Load(object sender, EventArgs e)
         {
             tboxInput.Text = Clipboard.GetText();
+                
             pboxValidationIcon.SizeMode = PictureBoxSizeMode.Zoom;
 
             _currentOption = _translatorController.SuggestTranslator(tboxInput.Text);
